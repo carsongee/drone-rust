@@ -28,6 +28,8 @@ args = [
      "build",
      "--tag",
      "carsongee/drone-cargo-make",
+     "--tag",
+     "carsongee/drone-cargo-make:dev",
      "."
 ]
 dependencies = ["clean"]
@@ -41,14 +43,22 @@ args = [
      "linux/amd64,linux/arm64",
      "--tag",
      "carsongee/drone-cargo-make",
-     # "--push",
+     "--push",
      "."
 ]
 dependencies = ["clean"]
+
+[tasks.drone-test]
+command = "drone"
+args = ["exec"]
+cwd = "tests/testdata/example"
+dependencies = ["docker-dev"]
 
 [tasks.ci]
 dependencies = [
     "format",
     "build",
-    "test"
+    "test",
+    "docker-dev",
+    "drone-test"
 ]

@@ -5,9 +5,8 @@ use clap::Parser;
 struct Args {
     /// Pattern to look for
     #[arg(short, long, env = "PLUGIN_PATTERN")]
-    pattern: String
+    pattern: String,
 }
-
 
 fn main() {
     let args = Args::parse();
