@@ -1,0 +1,9 @@
+[package]
+name = "drone-cargo-make"
+version = "0.1.0"
+edition = "2021"
+authors = ["Carson Gee <x@carsongee.com"]
+
+
+[dependencies]
+clap = { version = "4.3.0", features = ["derive", "env"] }

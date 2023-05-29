@@ -1,0 +1,54 @@
+[tasks.format]
+install_crate = "rustfmt"
+command = "cargo"
+args = ["fmt", "--", "--emit=files"]
+
+[tasks.clean]
+command = "cargo"
+args = ["clean"]
+
+[tasks.build]
+command = "cargo"
+args = ["build"]
+dependencies = ["clean"]
+
+[tasks.release]
+command = "cargo"
+args = ["build", "--release"]
+dependencies = ["clean"]
+
+[tasks.test]
+command = "cargo"
+args = ["test"]
+dependencies = ["clean"]
+
+[tasks.docker-dev]
+command = "docker"
+args = [
+     "build",
+     "--tag",
+     "carsongee/drone-cargo-make",
+     "."
+]
+dependencies = ["clean"]
+
+[tasks.docker-release]
+command = "docker"
+args = [
+     "buildx",
+     "build",
+     "--platform",
+     "linux/amd64,linux/arm64",
+     "--tag",
+     "carsongee/drone-cargo-make",
+     # "--push",
+     "."
+]
+dependencies = ["clean"]
+
+[tasks.ci]
+dependencies = [
+    "format",
+    "build",
+    "test"
+]
