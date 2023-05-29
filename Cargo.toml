@@ -1,5 +1,5 @@
 [package]
-name = "drone-cargo-make"
+name = "drone-rust"
 version = "0.1.0"
 edition = "2021"
 authors = ["Carson Gee <x@carsongee.com"]

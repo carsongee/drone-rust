@@ -27,9 +27,9 @@ command = "docker"
 args = [
      "build",
      "--tag",
-     "carsongee/drone-cargo-make",
+     "carsongee/drone-rust",
      "--tag",
-     "carsongee/drone-cargo-make:dev",
+     "carsongee/drone-rust:dev",
      "."
 ]
 dependencies = ["clean"]
@@ -41,8 +41,13 @@ args = [
      "build",
      "--platform",
      "linux/amd64,linux/arm64",
+#     "--label", "org.label-schema.build-date=$(date -u +"%Y-%m-%dT%H:%M:%SZ")",
+#     "--label", "org.label-schema.vcs-ref=$(git rev-parse --short HEAD)",
+     
      "--tag",
-     "carsongee/drone-cargo-make",
+     "carsongee/drone-rust",
+     "--tag",
+     "carsongee/drone-rust:stable",
      "--push",
      "."
 ]
